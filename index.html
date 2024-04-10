@@ -6,26 +6,43 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
-
-    
+    <div class="container"> 
         <div class="header">
-        <p >Type the length of the random password you want to generate</p>
+            <p >Type the length of the random password you want to generate</p>
         <div class="actions">
-            <input placeholder="Enter password length" type="number" name="input length" id="length" value="8">
+            <input class="value8" placeholder="Enter password length" type="number" name="input length" id="length" value="8">
             <button class="btn-generate">Generate</button>
         </div>
+        <div class="passkey">
+            
+        </div>   
     </div>
-    <div class="passkey">
-        
-    </div>
-    
 </div>
+    <script>
+        const generateBtn = document.querySelector('.btn-generate');
+const password = document.querySelector('.passkey');
+const passwordLength = document.querySelector('#length');
 
-    <script src="script.js"></script>
+generateBtn.addEventListener('click', function (length) {
+    length=passwordLength.value
+
+    const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+   // const charset = '0123456789' 
+   let result = "";
+ 
+    for (let i = 0; i < length; i++) {
+       const randomIndex = Math.floor(Math.random() * charset.length);
+       result += charset[randomIndex];
+    }
+    password.insertAdjacentHTML('afterbegin',`<p class="blank"></p>`)
+    password.insertAdjacentHTML('afterbegin',`<p class="generated-password">${result}</p>`)
+    return result;
+ }
+)
+    </script>
     <style>
         body{
-            margin: 0;
+            margin: 4%;
             padding: 0;
             background-color: rgb(49, 53, 53);
             display: flex;
@@ -34,14 +51,16 @@
            
         }
         .container{
-            width: 70%;
+            padding: 5%;
+            width: 95%;
             display: flex;
             align-items: center;
             flex-direction: column;
             border: 3px solid white;
-            border-radius: 20px;
+            border-radius: 15px;
         }
         .header{
+            text-align: center;
             display: flex;
             align-items: center;
             flex-direction: column;
@@ -49,25 +68,40 @@
             color: white;
             font-size: larger;
             padding-bottom: 10px;
-            border-bottom: 3px groove white;
+            
         }
-        .passkey{
+        /* .passkey{
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-        .generatedPassword{
+        } */
+        .generated-password{
+            text-align: justify;
             width: 100%;
             color: white;
+            border-bottom: 3px groove white;
         }
         .blank{
             display: block;
             width: 100%;
-            border-bottom: 3px groove white;
+            
 
         }
-
+        .value8{
+            width: 15%;
+        }
+        .btn-generate{
+            width: 85%;
+        }
+        .actions{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+            border-bottom: 3px groove white;
+            padding-bottom: 5%;
+        }
     </style>
 </body>
 </html>

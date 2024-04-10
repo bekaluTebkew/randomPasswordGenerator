@@ -1,4 +1,4 @@
-const generateBtn = document.querySelector('.btn-generate')
+const generateBtn = document.querySelector('.btn-generate');
 const password = document.querySelector('.passkey');
 const passwordLength = document.querySelector('#length');
 
@@ -6,7 +6,8 @@ generateBtn.addEventListener('click', function (length) {
     length=passwordLength.value
 
     const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
-    let result = "";
+   // const charset = '0123456789' 
+   let result = "";
  
     for (let i = 0; i < length; i++) {
        const randomIndex = Math.floor(Math.random() * charset.length);
