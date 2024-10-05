@@ -1,0 +1,55 @@
+body {
+  width: 100%;
+  font-size: 2rem;
+  color: white;
+  height: 100vh;
+  margin: 0;
+  font-family: monospace;
+}
+
+.container {
+
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+  justify-content: center;
+
+  align-items: center;
+  background: linear-gradient(to top left, #333, black);
+}
+
+button {
+  background-color: #333;
+  color: white;
+  padding: 0.5rem;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+input {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: none;
+}
+
+.header {
+  text-align: center;
+}
+
+.passkey {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.passkey p {
+  border: #333 dashed 0.5rem;
+  padding: 1rem;
+
+  text-wrap: wrap;
+  width: 80vw;
+  overflow-wrap: break-word;
+  text-align: center;
+  word-wrap: break-word;
+}

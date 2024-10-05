@@ -1,107 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="container"> 
-        <div class="header">
-            <p >Type the length of the random password you want to generate</p>
-        <div class="actions">
-            <input class="value8" placeholder="Enter password length" type="number" name="input length" id="length" value="8">
-            <button class="btn-generate">Generate</button>
-        </div>
-        <div class="passkey">
-            
-        </div>   
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Password Generator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <p>Type the length of the random password you want to generate</p>
+        <form class="actions">
+          <input
+            class="value8"
+            placeholder="Enter password length"
+            type="number"
+            name="input length"
+            id="length"
+            value="8"
+          />
+          <button class="btn-generate">Generate</button>
+        </form>
+        <div class="passkey"></div>
+      </div>
     </div>
-</div>
     <script>
-        const generateBtn = document.querySelector('.btn-generate');
-const password = document.querySelector('.passkey');
-const passwordLength = document.querySelector('#length');
+      const generateBtn = document.querySelector(".btn-generate");
+      const password = document.querySelector(".passkey");
+      const passwordLength = document.querySelector("#length");
 
-generateBtn.addEventListener('click', function (length) {
-    length=passwordLength.value
+      const copyToClipboard = function () {
+        const text = document.querySelector(".generated-password").innerText;
+        navigator.clipboard
+          .writeText(text)
+          .then(() => alert("Text copied to clipboard!"))
+          .catch((err) => console.error("Error copying text:", err));
+      };
 
-    const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
-   // const charset = '0123456789' 
-   let result = "";
- 
-    for (let i = 0; i < length; i++) {
-       const randomIndex = Math.floor(Math.random() * charset.length);
-       result += charset[randomIndex];
-    }
-    password.insertAdjacentHTML('afterbegin',`<p class="blank"></p>`)
-    password.insertAdjacentHTML('afterbegin',`<p class="generated-password">${result}</p>`)
-    return result;
- }
-)
+      generateBtn.addEventListener("click", function (length) {
+        length.preventDefault()
+        length = passwordLength.value;
+
+        const charset =
+          "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()";
+        // const charset = '0123456789'
+        let result = "";
+
+        for (let i = 0; i < length; i++) {
+          const randomIndex = Math.floor(Math.random() * charset.length);
+          result += charset[randomIndex];
+        }
+
+        password.insertAdjacentHTML("afterbegin", `<p class="blank"></p>`);
+        password.innerHTML = `<p class="generated-password">${result}</p><button onclick="copyToClipboard()">Copy Password</button>`;
+
+        return result;
+      });
     </script>
-    <style>
-        body{
-            margin: 5%;
-            padding: 0;
-            background-color: rgb(49, 53, 53);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-           
-        }
-        .container{
-            padding: 5%;
-            width: 95%;
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            border: 3px solid white;
-            border-radius: 15px;
-        }
-        .header{
-            text-align: center;
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            width: 100%;
-            color: white;
-            font-size: larger;
-            padding-bottom: 10px;
-            
-        }
-        /* .passkey{
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        } */
-        .generated-password{
-            text-align: justify;
-            width: 100%;
-            color: white;
-            border-bottom: 3px groove white;
-        }
-        .blank{
-            display: block;
-            width: 100%;
-            
-
-        }
-        .value8{
-            width: 15%;
-        }
-        .btn-generate{
-            width: 85%;
-        }
-        .actions{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            width: 100%;
-            border-bottom: 3px groove white;
-            padding-bottom: 5%;
-        }
-    </style>
-</body>
+  </body>
 </html>
+
