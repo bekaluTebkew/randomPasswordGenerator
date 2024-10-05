@@ -11,9 +11,9 @@ body {
 
   display: flex;
   height: 100%;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-
+  gap: 1rem;
   align-items: center;
   background: linear-gradient(to top left, #333, black);
 }
@@ -25,6 +25,8 @@ button {
   border: none;
   font-size: 1rem;
   cursor: pointer;
+  text-transform: uppercase;
+
 }
 
 input {
@@ -33,8 +35,11 @@ input {
   border: none;
 }
 
-.header {
+.container>p {
+  text-transform: uppercase;
   text-align: center;
+  margin: 0.5rem;
+
 }
 
 .passkey {
