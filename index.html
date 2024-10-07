@@ -1,26 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Random Password Generator</title>
     <link rel="stylesheet" href="style.css" />
+
+    <link rel="icon" type="image/png" href="favicon.png" />
   </head>
   <body>
     <div class="container">
-        <p>Type the length of the random password you want to generate</p>
-        <form class="actions">
-          <input
-            class="value8"
-            placeholder="Enter password length"
-            type="number"
-            name="input length"
-            id="length"
-            value="8"
-          />
-          <button class="btn-generate">Generate</button>
-        </form>
-        <div class="passkey"></div>
+      <p class="header">
+        Type the length of the random password you want to generate
+      </p>
+      <form class="actions">
+        <input
+          class="value8"
+          placeholder="Enter password length"
+          type="number"
+          name="input length"
+          id="length"
+          value="8"
+          max="100"
+        />
+        <button class="btn-generate">Generate</button>
+      </form>
+      <div class="passkey"></div>
+      <span class="link-box">
+        <a href="https://github.com/bekaluTebkew">
+          Made by Bekalu Tebkew
+          <img src="github-logo.png" width="18px" />
+        </a>
+      </span>
     </div>
     <script>
       const generateBtn = document.querySelector(".btn-generate");
@@ -36,7 +47,7 @@
       };
 
       generateBtn.addEventListener("click", function (length) {
-        length.preventDefault()
+        length.preventDefault();
         length = passwordLength.value;
 
         const charset =
@@ -50,7 +61,7 @@
         }
 
         password.insertAdjacentHTML("afterbegin", `<p class="blank"></p>`);
-        password.innerHTML = `<p class="generated-password">${result}</p><button onclick="copyToClipboard()">Copy Password</button>`;
+        password.innerHTML = `<p class="generated-password">${result.slice(0, 100)}</p><button onclick="copyToClipboard()">Copy Password</button>`;
 
         return result;
       });
